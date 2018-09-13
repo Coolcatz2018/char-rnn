@@ -1,4 +1,4 @@
-
+$ th train.lua -data_dir data/some_folder -gpuid -1
 --[[
 
 This file trains a character-level multi-layer RNN on text data
