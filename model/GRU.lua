@@ -1,6 +1,13 @@
-
+git clone https://github.com/torch/distro.git ~/torch --recursive
+cd ~/torch; bash install-deps;
+./install.sh
 local GRU = {}
-
+# On Linux with bash
+source ~/.bashrc
+# On Linux with zsh
+source ~/.zshrc
+# On OSX or in Linux with none of the above.
+source ~/.profile
 --[[
 Creates one timestep of one GRU
 Paper reference: http://arxiv.org/pdf/1412.3555v1.pdf
