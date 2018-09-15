@@ -1,3 +1,8 @@
+train.lua
+th train.lua -data_dir data/some_folder -rnn_size 512 -num_layers 2 -dropout 0.5
+th convert_gpu_cpu_checkpoint.lua cv/lm_lstm_epoch30.00_1.3950.t7
+
+
 git clone https://github.com/torch/distro.git ~/torch --recursive
 cd ~/torch; bash install-deps;
 ./install.sh
@@ -30,7 +35,7 @@ function GRU.gru(input_size, rnn_size, n, dropout)
   local x, input_size_L
   local outputs = {}
   for L = 1,n do
-
+th sample.lua cv/some_checkpoint.t7 -gpuid -1
     local prev_h = inputs[L+1]
     -- the input to this layer
     if L == 1 then 
@@ -63,7 +68,7 @@ function GRU.gru(input_size, rnn_size, n, dropout)
   local proj = nn.Linear(rnn_size, input_size)(top_h)
   local logsoft = nn.LogSoftMax()(proj)
   table.insert(outputs, logsoft)
-
+cv/lm_lstm_epoch30.00_1.3950.t7_cpu.t7
   return nn.gModule(inputs, outputs)
 end
 
